@@ -257,6 +257,7 @@ extension String {
     subscript (r: Range<Int>) -> String {
         let start = characters.index(startIndex, offsetBy: r.lowerBound)
         let end = characters.index(start, offsetBy: r.upperBound - r.lowerBound)
-        return String(self[Range(start ..< end)])
+        let range = Range(uncheckedBounds: (lower: start, upper: end))
+        return String(self[range])
     }
 }
